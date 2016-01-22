@@ -18,13 +18,24 @@ public class extractFeatures {
 	        }
 	    return avg / counter;
 	}
+	
+	public static double stdev(LinkedList<Double> values) {
+		double diffSquared = 0.0;
+		double avg = average(values);
+		int counter = 0;
+		for (double b : values) {
+			diffSquared += Math.pow((b - avg), 2);
+            counter++;
+        }
+		return Math.sqrt(diffSquared / counter);
+	}
 
 	public static void readFile() throws Exception
 	{
 		double initialTimeStamp;
 		
 		// Open the file
-		FileInputStream fstream = new FileInputStream("C:\\Users\\ZahiD-PC\\Desktop\\gait-data\\gait-data\\o1-76-si.txt");
+		FileInputStream fstream = new FileInputStream("/Users/jenna/Desktop/programming/Java/GritAnalysis/src/o1-76-si.txt");
 		InputStreamReader istream= new InputStreamReader(fstream);
 		BufferedReader br = new BufferedReader(istream);
 
@@ -55,6 +66,7 @@ public class extractFeatures {
 			{
 			System.out.println (values);
 			System.out.println (average(values));
+			System.out.println (stdev(values));
 			values= new LinkedList<Double>();
 	        initialTimeStamp=Double.parseDouble(str[0]);
 	        values.add(Double.parseDouble(str[1]));
