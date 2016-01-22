@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class extractFeatures {
 	static int windowSize=10;
-	static int overlappingSize=2;
+	static int overlappingSize=5;
 	
 	public static double average(LinkedList<Double> values)
 	{
