@@ -37,8 +37,8 @@ public class extractFeatures {
 	{
 		double initialTimeStamp;
 		
-		// Open the file
-		FileInputStream fstream = new FileInputStream("/Users/jenna/Desktop/programming/Java/GritAnalysis/src/o1-76-si.txt");
+		
+		FileInputStream fstream = new FileInputStream("./dataset/o1-76-si.txt");
 		InputStreamReader istream= new InputStreamReader(fstream);
 		BufferedReader br = new BufferedReader(istream);
 
