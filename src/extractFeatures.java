@@ -19,15 +19,18 @@ public class extractFeatures {
 	    return avg / counter;
 	}
 	
-	public static double stdev(LinkedList<Double> values) {
+	public static double stdev(LinkedList<Double> values, double avg) {
 		double diffSquared = 0.0;
-		double avg = average(values);
 		int counter = 0;
 		for (double b : values) {
 			diffSquared += Math.pow((b - avg), 2);
             counter++;
         }
 		return Math.sqrt(diffSquared / counter);
+	}
+	
+	public static double coefficiantOfVariation(double stdev, double average) {
+		return (100*stdev)/average;
 	}
 
 	public static void readFile() throws Exception
@@ -65,8 +68,12 @@ public class extractFeatures {
 			else
 			{
 			System.out.println (values);
-			System.out.println (average(values));
-			System.out.println (stdev(values));
+			double avg= average(values);
+			System.out.println (avg);
+			double stdev=stdev(values,avg);
+			System.out.println (stdev);
+			double CV= coefficiantOfVariation(stdev,avg);
+			System.out.println (CV);
 			values= new LinkedList<Double>();
 	        initialTimeStamp=Double.parseDouble(str[0]);
 	        values.add(Double.parseDouble(str[1]));
